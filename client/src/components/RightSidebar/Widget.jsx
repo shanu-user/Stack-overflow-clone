@@ -12,11 +12,11 @@ const Widget = () => {
       <h4>The Overflow Blog</h4>
       <div className="right-sidebar-div-1">
         <div className="right-sidebar-div-2">
-          <img src={pen} width='18' alt=''/>
+          <img src={pen} width='18' alt='pen'/>
           <p>Observability is key to the future of software (and your DevOps career)</p>
         </div>
         <div className="right-sidebar-div-2">
-          <img src={pen} width='18' alt=''/>
+          <img src={pen} width='18' alt='pen'/>
           <p>Podcast 374: How valuable is your screen name?</p>
         </div>
       </div>
@@ -26,15 +26,15 @@ const Widget = () => {
       <h4>Featured on Meta</h4>
       <div className="right-sidebar-div-1">
         <div className="right-sidebar-div-2">
-          <img src={comment} width='18' alt=''/>
+          <img src={comment} width='18' alt='pen'/>
           <p>Review queue workflows - Final release...</p>
         </div>
         <div className="right-sidebar-div-2">
-          <img src={comment} width='18' alt=''/>
+          <img src={comment} width='18' alt='pen'/>
           <p>Please welcome Valued Associates: #958 - V2Blash #959 - SpencerG</p>
         </div>
         <div className="right-sidebar-div-2">
-          <img src={blacklogo} width='18' alt=''/>
+          <img src={blacklogo} width='18' alt='pen'/>
           <p>Outdated Answers: accepted answer is now unpinned on Stack Overflow</p>
         </div>
       </div>

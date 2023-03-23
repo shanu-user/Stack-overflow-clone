@@ -1,12 +1,12 @@
 import * as api from '../api/index.js'
 
 
-export const askQuestion = (questionData, navigate) => async (dispatch) =>{
+export const askQuestion = (questionData) => async (dispatch) =>{
   try{
     const {data}=await api.postQuestion(questionData)
+    console.log(data)
     dispatch({type: "POST_QUESTION" ,payload: data})
     dispatch(fetchAllQuestions())
-    navigate('/')
   }catch(err){
     console.log(err)
   }
@@ -15,7 +15,7 @@ export const askQuestion = (questionData, navigate) => async (dispatch) =>{
 export const fetchAllQuestions = () => async (dispatch)=>{
   try{
     console.log("fetched data")
-    const {data} = await api.getAllQuestion()
+    const {data} = await api.getAllQuestions()
     dispatch({type: 'FETCH_ALL_QUESTIONS', payload: data})
   }catch(err){
     console.log(err)
@@ -24,7 +24,7 @@ export const fetchAllQuestions = () => async (dispatch)=>{
 
 export const deleteQuestion = (id, navigate) => async(dispatch) => {
   try{
-    const {data} = api.deleteQuestion(id)
+    api.deleteQuestion(id)
     dispatch(fetchAllQuestions)
     navigate('/')
   }
@@ -35,7 +35,7 @@ export const deleteQuestion = (id, navigate) => async(dispatch) => {
 
 export const voteQuestion = (id, value, userId) => async(dispatch) =>{
   try{
-    const {data} = await api.voteQuestion(id, value, userId)
+    await api.voteQuestion(id, value, userId)
     dispatch(fetchAllQuestions())
   } 
   catch(error){
@@ -45,8 +45,8 @@ export const voteQuestion = (id, value, userId) => async(dispatch) =>{
 
 export const postAnswer = (answerdata) => async(dispatch) =>{
   try{
-    const { id, noOfAnswers, answerBody, userAnswered, userId} = answerdata
-    const {data}=await api.postAnswer(id, noOfAnswers, answerBody, userAnswered, userId)
+    const { id, noOfAnswers, answerBody, userAnswered} = answerdata
+    const {data}=await api.postAnswer(id, noOfAnswers, answerBody, userAnswered)
     dispatch({ type: 'POST_ANSWER', payload: data})
     dispatch(fetchAllQuestions)
 
@@ -58,7 +58,7 @@ export const postAnswer = (answerdata) => async(dispatch) =>{
 
 export const deleteAnswer = (id, answerId, noOfAnswers) => async(dispatch) =>{
   try{
-    const { data } = await api.deleteAnswer(id, answerId, noOfAnswers)
+    await api.deleteAnswer(id, answerId, noOfAnswers)
     dispatch(fetchAllQuestions())
   }
   catch(error){

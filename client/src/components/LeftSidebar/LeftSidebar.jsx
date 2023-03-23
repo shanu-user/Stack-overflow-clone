@@ -3,27 +3,41 @@ import './LeftSidebar.css'
 import {NavLink} from 'react-router-dom'
 import Globe from '../../assets/Globe.svg'
 
-const LeftSidebar = () => {
+const LeftSidebar = ({ slideIn ,handleSlideIn}) => {
+  const slideInStyle = {
+    transform: "translateX(0%)",
+  }
+  const slideOutStyle = {
+    transform: "translateX(-100%)",
+  }
   return (
-    <div className='left-sidebar'>
+    <div className='left-sidebar' style={slideIn ? slideInStyle : slideOutStyle}>
       <nav className="side-nav">
-        <NavLink to='/' className='side-nav-link' activeclassname='active' style={{paddingLeft: "40px"}}>
-            <p>Home</p>
-        </NavLink>
         <div className="side-nav-div">
-            <div>
+          <button onClick={()=>handleSlideIn()} className="nav-btn">
+            <NavLink to='/' className='side-nav-links' activeclassname='active'>
+                <p>Home</p>
+            </NavLink>
+          </button>
+            <div style={{paddingLeft: "30px"}}>
                 <p>PUBLIC</p>
             </div>
-            <NavLink to='/Questions' className='side-nav-links'>
-                <img src={Globe} alt="Globe" />
-                <p style={{paddingLeft: "10px"}}>Questions</p>
-            </NavLink>
-            <NavLink to='/Tags' className='side-nav-links' styel={{paddingLeft: "40px"}}>
-                <p>Tags</p>
-            </NavLink>
-            <NavLink to='/Users' className='side-nav-links' style={{paddingLeft: "40px"}}>
-                <p>Users</p>
-            </NavLink>
+            <button onClick={()=>handleSlideIn()} className="nav-btn">
+              <NavLink to='/Questions' className='side-nav-links' activeclassname="active" style={{paddingLeft: "0px"}}>
+                  <img src={Globe} alt="Globe" />
+                  <p style={{paddingLeft: "10px"}}>Questions</p>
+              </NavLink>
+            </button>
+            <button onClick={()=>handleSlideIn()} className="nav-btn">
+              <NavLink to='/Tags' className='side-nav-links' activeclassname="active" style={{paddingLeft: "30px"}}>
+                  <p>Tags</p>
+              </NavLink>
+            </button>
+            <button onClick={()=>handleSlideIn()} className="nav-btn">
+              <NavLink to='/Users' className='side-nav-links' activeclassname="active" style={{paddingLeft: "30px"}}>
+                  <p>Users</p>
+              </NavLink>
+            </button>
         </div>
       </nav>
     </div>

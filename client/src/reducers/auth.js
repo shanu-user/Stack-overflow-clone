@@ -1,15 +1,18 @@
-const authReducer=(state={data: null},actions)=>{
-    switch(state.type){
+const authReducer=(state={data: null},action)=>{
+    switch(action.type){
         case 'AUTH':
-            localStorage.setItem('Profile',JSON.stringify(...actions?.data))
-            return {...state,data: actions?.data}
+            console.log(`Data reached to authReducer ${JSON.stringify({...action?.data})}`)
+            localStorage.setItem('Profile',JSON.stringify({...action?.data}))
+            console.log("Hello reached to authReducer")
+            console.log(state)
+            return {...state, data: action?.data}
         case 'LOGOUT':
             localStorage.clear()
-            return { ...state, data: null}
+            return state
         default:
             return state
-            break;
     }
 }
+
 
 export default authReducer

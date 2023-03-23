@@ -21,7 +21,7 @@ const ProfileBio = ( {currentProfile}) => {
         </div>
         <div>
             {
-                currentProfile?.about === null ? (
+                currentProfile?.about ? (
                     <>
                         <h4>About</h4>
                         <p>{currentProfile?.about}</p>

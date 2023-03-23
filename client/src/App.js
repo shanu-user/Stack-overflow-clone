@@ -1,9 +1,9 @@
 import './App.css';
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useDispatch} from 'react-redux'
-import {BrowserRouter} from 'react-router-dom';
+import {BrowserRouter as Router} from 'react-router-dom';
 import {fetchAllQuestions} from './actions/question.js'
-import AllRoutes from './components/AllRoutes'
+import AllRoutes from './AllRoutes'
 import Navbar from './components/Navbar/Navbar';
 import {fetchAllUsers} from './actions/users'
 
@@ -15,14 +15,28 @@ function App() {
 
   useEffect(()=>{
     dispatch(fetchAllQuestions()) 
-    dispatch(fetchAllUsers)
+    dispatch(fetchAllUsers())
   }, [dispatch])
+
+  const [slideIn, setSlideIn] = useState(true)
+
+  useEffect(()=>{
+    if(window.innerWidth <=760){
+      setSlideIn(false)
+    }
+  },[])
+
+  const handleSlideIn = () =>{
+    if(window.innerWidth <= 760){
+      setSlideIn((state) => !state)
+    }
+  }
   return (
     <div className="App">
-      <BrowserRouter>
-        <Navbar />
-        <AllRoutes />
-      </BrowserRouter>
+      <Router>
+        <Navbar handleSlideIn={handleSlideIn}/>
+        <AllRoutes slideIn={slideIn} handleSlideIn={handleSlideIn}/>
+      </Router>
     </div>
   );
 }

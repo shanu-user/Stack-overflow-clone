@@ -6,15 +6,16 @@ const Avatar = ({children,backgroundColor,
   color,
   borderRadius,
   fontSize,
-  textAlign,
   cursor}) => {
   const style={
     backgroundColor: backgroundColor,
     padding: `${px}, ${py}`,
-    color: color || 'black',
+    color: color,
     borderRadius: `${borderRadius}%`,
-    fontSize,
+    fontSize: `${fontSize}` || "30px",
     textAlign: "center",
+    width: "45px",
+    height: "43px",
     cursor: cursor || null,
     textDecoration: "none"
   };

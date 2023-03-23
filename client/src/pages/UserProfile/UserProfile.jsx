@@ -6,12 +6,11 @@ import Avatar from '../../components/Avatar/Avatar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBirthdayCake, faPen } from '@fortawesome/free-solid-svg-icons'
 import moment from 'moment'
-import EditProfileForm from './EditProfileBio'
+import EditProfileForm from './EditProfileForm'
 import ProfileBio from './ProfileBio'
 import './UsersProfile.css'
 
-const UserProfile = () => {
-
+const UserProfile = ({ slideIn, handleSlideIn }) => {
     const { id } = useParams
     const users = useSelector((state) => state.usersReducer)
     const currentProfile = users.filter((user) => user._id === id)[0]
@@ -20,7 +19,7 @@ const UserProfile = () => {
     const [Switch, setSwitch] = useState(false)
     return (
         <div className='home-container-1'>
-            <LeftSidebar />
+            <LeftSidebar slideIn={slideIn} handleSlideIn={handleSlideIn}/>
             <div className="home-container-2">
                 <section>
                     <div className="user-details-container">
@@ -33,7 +32,6 @@ const UserProfile = () => {
                                 <p><FontAwesomeIcon icon={faBirthdayCake}/>Joined {moment(currentProfile?.joinedOn).fromNow()}</p>
                             </div>
                         </div>
-                    </div>
                     {
                         currentUser?.result._id === id && (
                             <button type='button' onClick={setSwitch(true)} className='edit-profile-btn'>
@@ -41,17 +39,18 @@ const UserProfile = () => {
                             </button>
                         )
                     }
+                    </div>
+                <>
+                {
+                    Switch ? (
+                        <EditProfileForm currentUser={currentUser} setSwitch={setSwitch}/>
+                        ) : (
+                        <ProfileBio currentProfile={currentProfile}/>
+                        )
+                    }
+                </>
                 </section>
             </div>
-            <>
-            {
-                Switch ? (
-                    <EditProfileForm currentUser={currentUser} setSwitch={setSwitch}/>
-                ) : (
-                    <ProfileBio currentProfile={currentProfile}/>
-                )
-            }
-            </>
         </div>
     )
 }

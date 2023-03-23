@@ -16,6 +16,7 @@ const QuestionsDetails = () => {
 
     const {id}=useParams()
     const questionList = useSelector(state => state.questionsReducer)
+    console.log(questionList)
     // console.log(questionList)
     // console.log(id)
     // var questionList=[{
@@ -89,6 +90,7 @@ const QuestionsDetails = () => {
       }
       else{
         dispatch(postAnswer({ id, noOfAnswers: answerLength+1, answerBody: Answer, userAnswered: User.result.name, userId: User.result._id}))
+        setAnswer("")
       }
     }
   }
@@ -103,16 +105,26 @@ const QuestionsDetails = () => {
   }
 
   const handleUpVote = () =>{
-    dispatch(voteQuestion(id, 'upvote', User.result._id))
+    if(User === null){
+        alert("Login or Signup to up vote a question")
+        navigate("/Auth")
+    }
+    else{
+        dispatch(voteQuestion(id, 'upvote', User.result._id))
+    }
   }
 
   const handleDownVote = () =>{
+    if(User === null){
+        alert("Login or Signup to down vote a question")
+        navigate("/Auth")
+    }
     dispatch(voteQuestion(id, 'downvote', User.result._id))
   }
 return (
     <div className='question-details-page'>
        {
-        questionList.data === null ?
+        questionList === null ?
         <h1>Loading...</h1> :
         <>
             {

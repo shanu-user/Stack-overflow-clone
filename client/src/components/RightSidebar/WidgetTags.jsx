@@ -6,7 +6,7 @@ const WidgetTags = () => {
 
   return (
     <div className='widget-tags'>
-      <h3>Watched tags</h3>
+      <h4>Watched tags</h4>
       <div className="widget-tags-div">
         {
           tags.map((tag)=>(

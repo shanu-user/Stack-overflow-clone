@@ -4,10 +4,10 @@ import RightSidebar from '../../components/RightSidebar/RightSidebar'
 import HomeMainbar from '../../components/HomeMainbar/HomeMainbar'
 import '../../App.css'
 
-const Home = () => {
+const Home = ({slideIn}) => {
   return (
     <div className='home-container-1'>
-      <LeftSidebar />
+      <LeftSidebar slideIn={slideIn}/>
       <div className="home-container-2">
         <HomeMainbar />
         <RightSidebar />
