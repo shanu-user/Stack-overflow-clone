@@ -3,8 +3,12 @@ import axios from 'axios'
 const API=axios.create({baseURL: 'http://localhost:5000'})
 
 API.interceptors.request.use((req) =>{
-    console.log(process.env.REACT_APP_JWT_SECRET_TOKEN)
-    req.headers.authorization = `Bearer ${process.env.REACT_APP_JWT_SECRET_TOKEN}`
+    // console.log(process.env.REACT_APP_JWT_SECRET_TOKEN)
+    if (localStorage.getItem("Profile")) {
+        req.headers.authorization = `Bearer ${
+          JSON.parse(localStorage.getItem("Profile")).token
+        }`;
+      }
     // if(localStorage.getItem('Profile')){
     // }
     // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbmRhbndhcnNhY2hpbjVAZ21haWwuY29tIiwiaWQiOiI2NDE3MmI3OGEyODQ5ODA0N2E2ZDIzZmEiLCJpYXQiOjE2NzkyNDAwNTcsImV4cCI6MTY3OTI0MzY1N30.0OHeXoox838UELO6eiBoAfD2hgv4UMVfSPS8ciYOQpo"

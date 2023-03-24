@@ -13,9 +13,11 @@ import "./Navbar.css"
 
 const Navbar = ({handleSlideIn}) => {
     const dispatch=useDispatch()
-    var User=useSelector((state)=>{
-        return state.currentUserReducer
+    var Users=useSelector((state)=>{
+        return state
     })
+    const User=Users.currentUserReducer
+    console.log(Users)
     console.log(User)
     console.log(User?.result?.name.charAt(0).toUpperCase())
     const navigate = useNavigate()
