@@ -4,16 +4,19 @@ import { useParams } from 'react-router-dom'
 import LeftSidebar from '../../components/LeftSidebar/LeftSidebar'
 import Avatar from '../../components/Avatar/Avatar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBirthdayCake, faPen } from '@fortawesome/free-solid-svg-icons'
+import { faBirthdayCake,  faPen } from '@fortawesome/free-solid-svg-icons'
 import moment from 'moment'
 import EditProfileForm from './EditProfileForm'
 import ProfileBio from './ProfileBio'
 import './UsersProfile.css'
 
 const UserProfile = ({ slideIn, handleSlideIn }) => {
-    const { id } = useParams
+    const { id } = useParams()
+    console.log(id)
     const users = useSelector((state) => state.usersReducer)
+    console.log(users)
     const currentProfile = users.filter((user) => user._id === id)[0]
+    console.log(currentProfile)
     const currentUser = useSelector((state) => state.currentUserReducer)
     
     const [Switch, setSwitch] = useState(false)
@@ -32,13 +35,13 @@ const UserProfile = ({ slideIn, handleSlideIn }) => {
                                 <p><FontAwesomeIcon icon={faBirthdayCake}/>Joined {moment(currentProfile?.joinedOn).fromNow()}</p>
                             </div>
                         </div>
-                    {
-                        currentUser?.result._id === id && (
-                            <button type='button' onClick={setSwitch(true)} className='edit-profile-btn'>
+                        {
+                        currentUser?._id === id && (
+                            <button type='button' onClick={() => setSwitch(true)} className='edit-profile-btn'>
                                 <FontAwesomeIcon icon={faPen}/>Edit Profile
                             </button>
                         )
-                    }
+                        }
                     </div>
                 <>
                 {
