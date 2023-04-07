@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API=axios.create({baseURL: 'https://starter-micro-7yjs0eby3-shanu-user.vercel.app/'})
+const API=axios.create({baseURL: 'https://starter-micro-api-zeta.vercel.app/'})
 
 API.interceptors.request.use((req) =>{
     // console.log(process.env.REACT_APP_JWT_SECRET_TOKEN)
