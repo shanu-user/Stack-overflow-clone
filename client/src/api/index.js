@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API=axios.create({baseURL: 'https://starter-micro-api-zeta.vercel.app/'})
+const API=axios.create({baseURL: 'https://vercel.com/shanu-user/starter-micro-api/6sewXpRj7BZJbvtk4s1cCwjWUjSk'})
 
 API.interceptors.request.use((req) =>{
     // console.log(process.env.REACT_APP_JWT_SECRET_TOKEN)
@@ -9,9 +9,6 @@ API.interceptors.request.use((req) =>{
           JSON.parse(localStorage.getItem("Profile")).token
         }`;
       }
-    // if(localStorage.getItem('Profile')){
-    // }
-    // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbmRhbndhcnNhY2hpbjVAZ21haWwuY29tIiwiaWQiOiI2NDE3MmI3OGEyODQ5ODA0N2E2ZDIzZmEiLCJpYXQiOjE2NzkyNDAwNTcsImV4cCI6MTY3OTI0MzY1N30.0OHeXoox838UELO6eiBoAfD2hgv4UMVfSPS8ciYOQpo"
     return req
 })
 export const logIn=(authData)=>API.post('/user/login',authData)
