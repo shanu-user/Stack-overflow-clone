@@ -1,0 +1,49 @@
+.chat-message{
+    width: 100%;
+    height: 100px;
+}
+
+.ai-profile{
+    position: relative;
+    left: 5px;
+    width: 53px;
+    border: 1px solid black;
+    border-radius: 50%;
+    background-color: pink;
+}
+
+.customer-profile{
+    position: relative;
+    left: 5px;
+    width: 53px;
+    border: 1px solid black;
+    border-radius: 50%;
+    background-color: pink;
+}
+
+.article-message{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.article-message p{
+    position: relative;
+    left: 5px;
+    border: 1px solid black;
+}
+
+.customer-message{
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    flex-wrap: nowrap;
+    right: 6px;
+}
+
+
+.customer-message p{
+    position: relative;
+    left: 5px;
+    border: 1px solid black;
+}

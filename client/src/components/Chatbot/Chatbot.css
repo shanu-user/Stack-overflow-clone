@@ -1,0 +1,11 @@
+.chatbot{
+    border-radius: 50%;
+    height: 56px;
+    width: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: right;
+    border: 1px solid black;
+    background-color: rgb(74 74 203);
+}
