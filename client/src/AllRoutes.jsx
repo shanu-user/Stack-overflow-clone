@@ -3,16 +3,25 @@ import Home from "./pages/Home/Home"
 import Auth from "./pages/Auth/Auth"
 import {Routes, Route} from 'react-router-dom'
 import Questions from './pages/Questions/Questions'
+import ForTeams from './pages/ForTeams/ForTeams'
+import Products from './pages/Products/Products'
 import AskQuestion from './pages/AskQuestion/AskQuestion'
 import DisplayQuestion from './pages/Questions/DisplayQuestion'
 import Tags from './pages/Tags/Tags'
 import Users from './pages/Users/Users'
 import UserProfile from './pages/UserProfile/UserProfile'
+
+
+
+
+
 const AllRoutes = ({ slideIn, handleSlideIn }) => {
   return (
         <Routes>
           <Route path='/' element={<Home slideIn={slideIn} handleSlideIn={handleSlideIn}/>} />
           <Route path='/Auth' element={<Auth />} />
+          <Route path='/For_Teams' element={<ForTeams />} />
+          <Route path='/Product' element={<Products />} />
           <Route path='/AskQuestion' element={<AskQuestion />} />
           <Route path='/Questions' element={<Questions slideIn={slideIn} handleSlideIn={handleSlideIn}/>} />
           <Route path='/Questions/:id' element={<DisplayQuestion slideIn={slideIn} handleSlideIn={handleSlideIn}/>} />

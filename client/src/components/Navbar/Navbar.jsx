@@ -56,7 +56,7 @@ const Navbar = ({handleSlideIn}) => {
                     </Link>
                     <Link to='/About' className='nav-item nav-btn'>About</Link>
                     <Link to='/Product' className='nav-item nav-btn'>Product</Link>
-                    <Link to='/For Teams' className='nav-item nav-btn'>For Teams</Link>
+                    <Link to='/For_Teams' className='nav-item nav-btn'>For Teams</Link>
                     <form>
                         <input type="text" placeholder="Search..."/>
                         <img src={search} alt="search" width='18' className="search-icon"/>

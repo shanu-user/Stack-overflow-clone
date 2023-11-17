@@ -20,5 +20,7 @@
     left: 6px;
     font-weight: 400;
     position: relative;
+    display: flex;
+    justify-content: space-between;
     top: -15px;
 }

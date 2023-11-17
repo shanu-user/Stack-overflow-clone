@@ -6,10 +6,12 @@ import {fetchAllQuestions} from './actions/question.js'
 import AllRoutes from './AllRoutes'
 import Navbar from './components/Navbar/Navbar';
 import {fetchAllUsers} from './actions/users'
+import dotenv from 'dotenv'
 
 
+dotenv.config()
 function App() {
-
+  
 
   const dispatch = useDispatch()
 
@@ -36,6 +38,7 @@ function App() {
       <Router>
         <Navbar handleSlideIn={handleSlideIn}/>
         <AllRoutes slideIn={slideIn} handleSlideIn={handleSlideIn}/>
+        
       </Router>
     </div>
   );

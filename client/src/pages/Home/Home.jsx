@@ -12,14 +12,17 @@ const Home = ({slideIn}) => {
   const handleOpen = () => {
     setIsOpen(!isOpen)
   }
+
+  const handleClose = () => {
+    setIsOpen(!isOpen)
+  }
   return (
     <div className='home-container-1'>
       <LeftSidebar slideIn={slideIn}/>
       <div className="home-container-2">
         <HomeMainbar />
         <RightSidebar />
-        {!isOpen && <Chatbot handleOpen={handleOpen}/>}
-        {isOpen && <ChatWindow />}
+        {isOpen ? <ChatWindow handleClose={handleClose}/> : <Chatbot handleOpen={handleOpen} />}
       </div>
     </div>
   )

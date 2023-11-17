@@ -1,0 +1,29 @@
+.pay-btn{
+    margin: 40px;
+    border-radius: 12px;
+    height: 46px;
+    width: 158px;
+    position: absolute;
+    bottom: 4px;
+    background-color: deeppink;
+}
+
+.product_details{
+    border: 1px solid black;
+    width: 22%;
+    margin: 158px 20px;
+    position: relative;
+    padding: 38px 15px;
+    height: 376px;
+    left: -106px;
+    border-radius: 31px;
+    background: rgba(133, 25, 25, 0.48);
+}
+
+.product_details h1{
+    margin-left: 43px;
+}
+
+.feature-list{
+    font-size: 29px;
+}
