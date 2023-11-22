@@ -1,0 +1,11 @@
+.pay-btn{
+    margin: 83px;
+    border-radius: 12px;
+    height: 46px;
+    font-size: 17px;
+    width: 158px;
+    font-weight: 400;
+    position: relative;
+    bottom: -48px;
+    background-color: deeppink;
+}

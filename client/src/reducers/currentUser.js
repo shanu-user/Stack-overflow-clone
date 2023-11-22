@@ -3,7 +3,7 @@ const currentUserReducer = (state={data: null}, action)=>{
         case 'FETCH_CURRENT_USER':
             console.log('Hello reached to current user reducer')
             console.log(action?.payload)
-            if(action?.paylaod != null){
+            if(action?.payload != null){
                 localStorage.setItem("Profile", action?.payload)
             }
             return action?.payload

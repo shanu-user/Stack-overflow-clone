@@ -1,49 +1,173 @@
 import React, { useState } from 'react'
-import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js'
-import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom' 
+import PayButton from "./PayButton"
+import "./PaymentForm.css"
 
-const PaymentForm = (props) => {
-  const stripe = useStripe()
-  const elements = useElements()
-  const [errorMessage, setErrorMessage] = useState(null)
+
+const PaymentForm = () => {
+  {/* const cart = useSelector((state) => state.cartReducer)  */}
+  const [product, setProduct] = useState({
+    name: 'Free Plan',
+    price: 0,
+    currency: 'inr'
+  })
+  const auth = useSelector((state) => state.currentUserReducer)
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
   
-  //Handling the form onSubmit event
-  const handleSubmit = async(e) => {
-    e.preventDefault()
-
-    if(!stripe || !elements){
-      return
-    }
-
-    const {error} = await stripe.confirmPayment({
-      elements,
-      confirmParams: {
-        return_url: 'http://localhost:3000/'
-      }
-    })
-
-    if(error){
-      setErrorMessage(error.message)
-    }
-  }
-
-
   return (
-    <div>
-        <PaymentElement />
-        {props.productList.map((item, index) => (
-          <form onSubmit={handleSubmit} key={index} className="product_details" >
-            <h1>{item.paymentType}</h1>
-            <ul className="feature_list">
-              <li>{item.paymentCondition}</li>
-            </ul>
-            
-            <button disabled={!stripe} className="pay-btn">Pay {item.paymentCost}</button>
-          </form>
-        ))}
-        {errorMessage && <div>{errorMessage}</div>}
+    <div className="product-list">
+      <div className="product">
+        <h1>Silver Plan</h1>
+        <ul className="product-features">
+          <li>500 rupees per month</li>
+          <li>5 questions per day</li>
+        </ul>
+        <PayButton amount={500} currency="inr"/>
+      </div>
+      <div className="product">
+        <h1>Gold Plan</h1>
+        <ul className="product-features">
+          <li>1000 rupees per month</li>
+          <li>Unlimited questions</li>
+        </ul>
+        <PayButton amount={1000} currency="inr"/>
+      </div>
     </div>
   )
 }
 
 export default PaymentForm
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React from 'react'
+// import "./PaymentForm.css"
+// import PayButton from "./PayButton"
+// import {useElements, useStripe, CardElement} from '@stripe/react-stripe-js'
+// import axios from 'axios'
+
+
+// const PaymentForm = () => {
+//   const stripe = useStripe()
+//   const elements = useElements()
+
+  
+//   const handleSubmit = async (e) => {
+//     e.preventDefault()
+    
+//     if(!stripe || !elements)
+//       return
+    
+    
+    
+//     //Create payment intent on server
+//     const { error: backendError, clientSecret } = await axios.post('http://localhost:5000/payment', {
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify({
+//         paymentMethodType: 'card',
+//         currency: 'inr'
+//       })
+//     }).then((resp) => resp.json())
+
+//     if(backendError){
+//       console.log(backendError.message)
+//       return
+//     }
+//     console.log('Payment intent created')
+
+//     //Confirm the payment on the client
+//     const {error: stripeError, paymentIntent} = await stripe.confirmCardPayment(
+//       clientSecret, {
+//         payment_method: {
+//           card: elements.getElement(CardElement)
+//         }
+//       }
+//     )
+    
+//     if(stripeError){
+//       console.log(stripeError.message)
+//       return
+//     }
+
+//     console.log(`Payment Intent ${paymentIntent.id}: ${paymentIntent.status}`)
+//   }
+
+
+
+
+
+//   return (
+//     <div className="product_details">
+//       <form onSubmit={handleSubmit}>
+//         <CardElement />
+//         <button>Pay</button>
+//       </form>
+//     </div>
+//   )
+// }
+
+// export default PaymentForm

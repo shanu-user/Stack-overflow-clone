@@ -6,9 +6,10 @@ import '../../App.css'
 import Chatbot from '../../components/Chatbot/Chatbot'
 import ChatWindow from '../../components/Chatbot/ChatWindow'
 
+
+
 const Home = ({slideIn}) => {
   const [isOpen, setIsOpen] = useState(false)
-
   const handleOpen = () => {
     setIsOpen(!isOpen)
   }

@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // const API=axios.create({baseURL: 'https://starter-micro-api-zeta.vercel.app/'})
-const API=axios.create({baseURL: 'http://localhost:8000'})
+const API=axios.create({baseURL: 'http://localhost:5000'})
 
 API.interceptors.request.use((req) =>{
     // console.log(process.env.REACT_APP_JWT_SECRET_TOKEN)
@@ -9,7 +9,7 @@ API.interceptors.request.use((req) =>{
         req.headers.authorization = `Bearer ${
           JSON.parse(localStorage.getItem("Profile")).token
         }`;
-      }
+    }
     return req
 })
 export const logIn=(authData)=>API.post('/user/login',authData)
@@ -28,3 +28,11 @@ export const deleteAnswer = ( id, answerId, noOfAnswers )=>API.patch(`/answer/de
 
 export const getAllUsers = () => API.get('/user/getAllUsers')
 export const updateProfile = (id, updateData) => API.patch(`/user/update/${id}`, updateData)
+
+
+export const createPayment = (props) => axios.post('http://localhost:5000/payment/create-checkout-session', props, {
+  headers: {
+    Authorization: `Bearer ${process.env.REACT_APP_STRIPE_SECRET_KEY}`,
+    "Content-Type": 'application/x-www-form-urlencoded'
+  }
+})
