@@ -5,6 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRobot } from '@fortawesome/free-solid-svg-icons'
 import "./ChatMessage.css"
 import Avatar from '../Avatar/Avatar'
+import styled from 'styled-components'
+
+
 
 const ChatMessage = () => {
   const dispatch = useDispatch()
@@ -19,13 +22,14 @@ const ChatMessage = () => {
             {/* <div className="ai-profile">
                 <FontAwesomeIcon icon={faRobot} size="2x"/>
             </div> */}
-            <Avatar children={<FontAwesomeIcon icon={faRobot} size="2x"/>} backgroundColor="pink" />
+            {/* <Avatar children={<FontAwesomeIcon icon={faRobot} size="2x"/>} backgroundColor="pink" /> */}
             <p>Hello</p>
         </div>
         <div className="customer-message">
-            <Avatar children={Users?.result?.name.charAt(0).toUpperCase()} backgroundColor="pink" px="20" py="20" color="black"/>
+            {/* <Avatar children={Users?.result?.name.charAt(0).toUpperCase()} backgroundColor="pink" px="20" py="20" color="black"/> */}
             <p>Hello</p>
         </div>
+        
     </div>
   )
 }

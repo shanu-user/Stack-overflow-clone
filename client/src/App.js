@@ -7,11 +7,18 @@ import AllRoutes from './AllRoutes'
 import Navbar from './components/Navbar/Navbar';
 import {fetchAllUsers} from './actions/users'
 import dotenv from 'dotenv'
-
+import Chatbot from './components/Chatbot/Chatbot'
 
 dotenv.config()
 function App() {
-  
+  const [isOpen, setIsOpen] = useState(false)
+  const handleOpen = () => {
+    setIsOpen(!isOpen)
+  }
+
+  const handleClose = () => {
+    setIsOpen(!isOpen)
+  }
 
   const dispatch = useDispatch()
 
@@ -38,7 +45,7 @@ function App() {
       <Router>
         <Navbar handleSlideIn={handleSlideIn}/>
         <AllRoutes slideIn={slideIn} handleSlideIn={handleSlideIn}/>
-        
+        <Chatbot />
       </Router>
     </div>
   );
